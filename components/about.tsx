@@ -3,7 +3,7 @@
 import { motion, useAnimation } from 'framer-motion'
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import kurtImage from '../public/img/kurt.JPG'
+const kurtImage = require('@/public/img/kurt.JPG');
 import styled from 'styled-components';
 import { FaDesktop, FaRocket, FaLightbulb, FaTachometerAlt } from 'react-icons/fa';
 
