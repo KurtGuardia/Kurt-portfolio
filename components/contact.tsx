@@ -29,7 +29,7 @@ export function Contact() {
   }, []);
 
   return (
-    <section id="contact" className="py-20 bg-black flex flex-col items-center">
+    <section id="contact" className="py-20 flex flex-col items-center">
       <div className="bg-gray-800 p-10 rounded-lg shadow-lg max-w-md mx-auto relative z-10">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-12 text-center text-white"

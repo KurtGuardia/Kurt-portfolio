@@ -65,15 +65,15 @@ export function Hero() {
               className="flex items-center rounded-full px-4 py-2 text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 shadow-md shadow-cyan-500/50"
             >
               View Projects
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4 transform rotate-90" />
             </Link>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white/20 hover:bg-white/10 transition-all duration-300"
+            <a
+              href="/assets/CV Kurt.pdf"
+              download
+              className="bg-transparent text-white px-4 py-2 rounded border-2 border-white/20 hover:border-white/50 transition-all duration-300"
             >
               Download CV
-            </Button>
+            </a>
           </motion.div>
         </motion.div>
       </div>

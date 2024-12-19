@@ -1,17 +1,19 @@
 'use client'
 
 import { motion, useAnimation } from 'framer-motion'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
 import kurtImage from '@/public/img/kurt.JPG';
 import styled from 'styled-components';
 import { FaDesktop, FaRocket, FaLightbulb, FaTachometerAlt } from 'react-icons/fa';
 
 const SectionAbout = styled.section`
+  background: linear-gradient(to right, #2C1C18, #4C3A2F);
+  padding: 2rem;
+  color: #fff;
   padding: 6rem 0;
-  background: linear-gradient(45deg, #333, #444, #555, #666);
   background-size: 400% 400%;
-  animation: gradientAnimation 10s ease infinite;
+  animation: gradientAnimation 7s ease infinite;
 
   @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }

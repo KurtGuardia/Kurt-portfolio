@@ -20,9 +20,8 @@ export function Navigation() {
 
   return (
     <motion.header
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
-        isScrolled ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -39,7 +38,7 @@ export function Navigation() {
             </Link>
           </motion.div>
 
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {['About', 'Projects', 'Contact'].map((item) => (
               <motion.div
                 key={item}
@@ -54,9 +53,7 @@ export function Navigation() {
                 </Link>
               </motion.div>
             ))}
-            <Button variant="outline" className="border-white/20">
-              Download CV
-            </Button>
+            <a href="/assets/CV Kurt.pdf" download className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Download CV</a>
           </div>
 
           <Button
@@ -85,9 +82,7 @@ export function Navigation() {
                 {item}
               </Link>
             ))}
-            <Button variant="outline" className="w-full border-white/20">
-              Download CV
-            </Button>
+            <a href="/assets/CV Kurt.pdf" download className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Download CV</a>
           </motion.div>
         )}
       </nav>
