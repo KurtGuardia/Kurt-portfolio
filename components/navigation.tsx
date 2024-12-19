@@ -35,7 +35,7 @@ export function Navigation() {
 
   return (
     <motion.header
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 backdrop-blur-sm ${isScrolled && !/(Mobi|Android|iPh|iPad|iPhone)/i.test(navigator.userAgent) ? 'bg-black/80' : 'bg-transparent backdrop-blur-none'} ${isOpen ? 'backdrop-blur-none md:backdrop-blur-sm' : ''}`}
+      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-black/80' : 'bg-transparent'} ${isOpen ? 'backdrop-blur-none md:backdrop-blur-sm' : 'backdrop-blur-sm'}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
