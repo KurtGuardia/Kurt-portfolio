@@ -56,24 +56,26 @@ export function Hero() {
             Crafting modern web experiences with cutting-edge technologies
           </motion.p>
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col items-center justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <Link href="#projects"
-              className="flex items-center rounded-full px-4 py-2 text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 shadow-md shadow-cyan-500/50"
-            >
-              View Projects
-              <ArrowRight className="ml-2 h-4 w-4 transform rotate-90" />
-            </Link>
-            <a
-              href="/assets/CV Kurt.pdf"
-              download
-              className="bg-transparent text-white px-4 py-2 rounded border-2 border-white/20 hover:border-white/50 transition-all duration-300"
-            >
-              Download CV
-            </a>
+            <div className="flex justify-center">
+              <Link href="#projects"
+                className="flex items-center rounded-full px-4 py-2 text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 shadow-md shadow-cyan-500/50 w-fit"
+              >
+                View Projects
+                <ArrowRight className="ml-2 h-4 w-4 transform rotate-90" />
+              </Link>
+              <a
+                href="/assets/CV Kurt.pdf"
+                download
+                className="bg-transparent text-white px-4 py-2 rounded border-2 border-white/20 hover:border-white/50 transition-all duration-300 w-fit mx-4"
+              >
+                Download CV
+              </a>
+            </div>
           </motion.div>
         </motion.div>
       </div>

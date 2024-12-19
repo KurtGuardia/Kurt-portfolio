@@ -124,7 +124,7 @@ export function Projects() {
         >
           My Projects
         </motion.h2>
-        <div className="flex justify-center mb-20">
+        <div className="flex flex-wrap justify-center mb-20 gap-y-8">
           <button onClick={() => handleFilterChange('all')} className="mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">All</button>
           <button onClick={() => handleFilterChange('react')} className="mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">React</button>
           <button onClick={() => handleFilterChange('mern')} className="mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">MERN</button>

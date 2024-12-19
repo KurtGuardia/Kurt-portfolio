@@ -198,10 +198,9 @@ export function About() {
           </motion.figure>
         </Me>
 
-        <Content>
+        <Content className="flex flex-col items-center">
           <motion.p
-            className="section-about__content"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0 }}
             animate={controlsFeatures}
             transition={{ duration: 0.5 }}
           >
