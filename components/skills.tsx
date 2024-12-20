@@ -4,15 +4,15 @@ import { motion } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 
 const skills = [
-  { name: 'JavaScript', level: 90 },
-  { name: 'React', level: 85 },
-  { name: 'Node.js', level: 80 },
-  { name: 'TypeScript', level: 75 },
+  { name: 'JavaScript', level: 93 },
+  { name: 'React', level: 90 },
+  { name: 'HTML5', level: 93 },
   { name: 'Next.js', level: 85 },
-  { name: 'CSS/SASS', level: 80 },
-  { name: 'HTML5', level: 90 },
-  { name: 'Git', level: 85 },
+  { name: 'TypeScript', level: 70 },
+  { name: 'CSS/SASS', level: 93 },
+  { name: 'Git', level: 80 },
   { name: 'RESTful APIs', level: 80 },
+  { name: 'Node.js', level: 70 },
   { name: 'GraphQL', level: 70 },
 ]
 

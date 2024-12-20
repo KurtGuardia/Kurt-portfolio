@@ -13,6 +13,7 @@ export function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +35,7 @@ export function Contact() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
     const formData = new FormData(event.target);
     const urlSearchParams = new URLSearchParams();
     formData.forEach((value, key) => {
@@ -53,11 +55,12 @@ export function Contact() {
     setName('');
     setEmail('');
     setMessage('');
+    setIsSubmitting(false);
   };
 
   return (
     <section id="contact" className="py-20 flex flex-col items-center">
-      <div className="bg-gray-800 p-10 rounded-lg shadow-lg max-w-md mx-auto relative z-10">
+      <div className="bg-gray-800 p-10 rounded-lg shadow-lg w-full md:max-w-[500px] max-w-[300px] mx-auto relative z-10">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-12 text-center text-white"
           initial={{ opacity: 0, y: 20 }}
@@ -104,8 +107,11 @@ export function Contact() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-md p-4 transition flex items-center justify-center">
-              <Send className="mr-2 h-4 w-4" /> Send Message
+            <Button
+              type="submit"
+              className={`w-full ${isSubmitting ? 'bg-purple-900 hover:bg-purple-800' : 'bg-blue-500 hover:bg-blue-600'} text-white rounded-md p-4 transition flex items-center justify-center`}
+            >
+              {isSubmitting ? 'Sending...' : <><Send className="mr-2 h-4 w-4" /> Send Message</>}
             </Button>
           </form>
           {showPopup && (
