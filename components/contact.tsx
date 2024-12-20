@@ -61,7 +61,7 @@ export function Contact() {
             netlify-honeypot="bot-field"
             className="space-y-6 flex flex-col"
             onSubmit={handleSubmit}
-          >
+          > <input type="hidden" name="form-name" value="contact" />
             <Input type="text" placeholder="Your Name" className="border rounded-md p-4" />
             <Input type="email" placeholder="Your Email" className="border rounded-md p-4" />
             <Textarea placeholder="Your Message" rows={4} className="border rounded-md p-4" />
