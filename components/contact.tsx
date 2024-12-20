@@ -10,6 +10,9 @@ import { useEffect, useState } from 'react'
 export function Contact() {
   const [isMounted, setIsMounted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +50,9 @@ export function Contact() {
     });
 
     setShowPopup(true);
+    setName('');
+    setEmail('');
+    setMessage('');
   };
 
   return (
@@ -74,9 +80,30 @@ export function Contact() {
             onSubmit={handleFormSubmit}
           >
             <input type="hidden" name="form-name" value="contact" />
-            <Input type="text" placeholder="Your Name" className="border rounded-md p-4 bg-gray-200 text-black" />
-            <Input type="email" placeholder="Your Email" className="border rounded-md p-4 bg-gray-200 text-black" />
-            <Textarea placeholder="Your Message" rows={4} className="border rounded-md p-4 bg-gray-200 text-black" />
+            <Input
+              type="text"
+              placeholder="Your Name"
+              className="border rounded-md p-4 bg-gray-200 text-black"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Input
+              type="email"
+              placeholder="Your Email"
+              className="border rounded-md p-4 bg-gray-200 text-black"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Textarea
+              placeholder="Your Message"
+              rows={4}
+              className="border rounded-md p-4 bg-gray-200 text-black"
+              name="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
             <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-md p-4 transition flex items-center justify-center">
               <Send className="mr-2 h-4 w-4" /> Send Message
             </Button>
