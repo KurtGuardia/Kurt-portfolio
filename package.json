@@ -20,10 +20,10 @@
     "react-dom": "latest",
     "react-icons": "^5.4.0",
     "styled-components": "^6.1.13",
-    "tailwindcss": "^3.4.17",
-    "@netlify/plugin-nextjs": "^5.9.2"
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.9.2",
     "@types/node": "^22.10.2",
     "@types/react": "latest",
     "typescript": "latest"
