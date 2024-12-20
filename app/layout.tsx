@@ -5,9 +5,9 @@ import Head from 'next/head';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Your Website Title',
-  description: 'A brief description of your website.',
-  keywords: 'keyword1, keyword2, keyword3',
+  title: 'Kurt Guardia',
+  description: 'Explore the portfolio of Kurt Guardia, a passionate JavaScript developer specializing in creating user-friendly applications and elegant solutions. Discover projects, skills, and opportunities for collaboration.',
+  keywords: 'JavaScript, Developer, Portfolio, Web Development, User Experience, React, Next.js, MERN Stack, Frontend Development',
 };
 
 export default function RootLayout({ children }) {
