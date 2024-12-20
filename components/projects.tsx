@@ -4,7 +4,7 @@ import { motion, useAnimation } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ExternalLink, Github } from 'lucide-react'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image'
 
 const projectsData = [
@@ -96,23 +96,42 @@ const projectsData = [
 export function Projects() {
   const controls = useAnimation();
   const [isVisible, setIsVisible] = useState(false);
-  const [filter, setFilter] = useState('all'); // State for the selected filter
-  const timeoutId = setTimeout(() => setIsVisible(true), 1000);
+  const [filter, setFilter] = useState('all');
+  const sectionRef = useRef(null);
 
   useEffect(() => {
-    return () => clearTimeout(timeoutId);
-  }, []);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        const rect = entry.boundingClientRect;
+        // Add 50px offset before changing visibility
+        if (rect.top < window.innerHeight - 150) {
+          controls.start({ opacity: 1, y: 0 });
+          setIsVisible(true);
+        }
+      } else {
+        controls.start({ opacity: 0, y: 20 });
+        setIsVisible(false);
+      }
+    }, { threshold: 0.1 });
 
-  // Function to handle filter change
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [controls]);
+
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
   };
-
-  // Filtered projects based on the selected filter
   const filteredProjects = filter === 'all' ? projectsData : projectsData.filter(project => project.id === filter);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-gray-900 to-black">
+    <section id="projects" ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-900 to-black">
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600"
@@ -135,10 +154,10 @@ export function Projects() {
           {filteredProjects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={controls}
-              whileInView={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileInView={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
               className="animate-float"

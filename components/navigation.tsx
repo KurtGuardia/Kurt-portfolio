@@ -40,11 +40,11 @@ export function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <button onClick={toggleMenu} className="text-white fixed top-4 right-4 z-50">
+      <button onClick={toggleMenu} className="text-white fixed top-4 right-4 z-50 md:hidden">
         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
-      <nav className={`container mx-auto px-4 py-4 ${isOpen ? 'fixed top-0 left-0 w-full h-screen' : ''}`}>
-        <div className="flex items-center justify-between">
+      <nav className={`container mx-auto px-4 py-4 ${isOpen ? 'fixed top-0 left-0 w-full h-screen' : ''} md:flex md:items-center md:justify-between md:static md:h-auto md:bg-transparent`}>
+        <div className="flex items-center justify-between w-full">
           <motion.div
             style={{ zIndex: 1000 }}
             initial={{ opacity: 0 }}

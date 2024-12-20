@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { FaDesktop, FaRocket, FaLightbulb, FaTachometerAlt } from 'react-icons/fa';
 
 const SectionAbout = styled.section`
-  background: linear-gradient(to right, #2C1C18, #4C3A2F);
+  background: linear-gradient(to right, #222, #555, #777);
   padding: 2rem;
   color: #fff;
   padding: 6rem 0;

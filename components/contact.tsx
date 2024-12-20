@@ -47,9 +47,6 @@ export function Contact() {
     });
 
     setShowPopup(true);
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 2500);
   };
 
   return (
@@ -77,9 +74,9 @@ export function Contact() {
             onSubmit={handleFormSubmit}
           >
             <input type="hidden" name="form-name" value="contact" />
-            <Input type="text" placeholder="Your Name" className="border rounded-md p-4" />
-            <Input type="email" placeholder="Your Email" className="border rounded-md p-4" />
-            <Textarea placeholder="Your Message" rows={4} className="border rounded-md p-4" />
+            <Input type="text" placeholder="Your Name" className="border rounded-md p-4 bg-gray-200 text-black" />
+            <Input type="email" placeholder="Your Email" className="border rounded-md p-4 bg-gray-200 text-black" />
+            <Textarea placeholder="Your Message" rows={4} className="border rounded-md p-4 bg-gray-200 text-black" />
             <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-md p-4 transition flex items-center justify-center">
               <Send className="mr-2 h-4 w-4" /> Send Message
             </Button>
