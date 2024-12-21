@@ -27,13 +27,13 @@ const projectsData = [
     imgSrc: '/img/spotify-clone.png',
   },
   {
-    id: 'mern',
-    title: 'K-Shop e-Commerce',
-    description: 'Fullstack app. A functional e-commerce built with MERN stack.',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
-    liveLink: 'https://k-shop-1-61803399.herokuapp.com/',
-    codeLink: 'https://github.com/KurtGuardia/MERN-K-Shop',
-    imgSrc: '/img/k-shop.jpg',
+    id: 'website',
+    title: 'Ciner',
+    description: 'Landing page for ciner.org renewable energy data center, build with advance techniques',
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    liveLink: 'https://ciner.org',
+    codeLink: 'https://github.com/KurtGuardia/Ciner',
+    imgSrc: '/img/ciner.jpg',
   },
   {
     id: 'website',
@@ -57,12 +57,12 @@ const projectsData = [
   },
   {
     id: 'website',
-    title: 'Phi - Desarrollo Web',
-    description: 'Web site with Golden Ratio theme, done from the design, image editing and develop with advance SasS.',
-    technologies: ['HTML', 'CSS', 'SaaS'],
-    liveLink: 'https://phi-desarrollo.netlify.app/',
-    codeLink: 'https://github.com/KurtGuardia/Phi-Diseno-y-Desarrollo-Web',
-    imgSrc: '/img/phi.jpg',
+    title: 'Therapist Dr. Nadia',
+    description: 'Holistic therapy landing page for a young female doctor in Cochabamba, built with Next and Scss. (She\'s choosing the domain)',
+    technologies: ['Next', 'Tailwind', 'Tailwind animations'],
+    liveLink: 'https://nadiahomsi.netlify.app/',
+    codeLink: 'https://github.com/KurtGuardia/nadia-homsi',
+    imgSrc: '/img/nadia.png',
   },
   {
     id: 'javascript',
@@ -84,12 +84,12 @@ const projectsData = [
   },
   {
     id: 'website',
-    title: 'Ciner',
-    description: 'Landing page for ciner.org renewable energy data center, build with advance techniques',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    liveLink: 'https://ciner.org',
-    codeLink: 'https://github.com/KurtGuardia/Ciner',
-    imgSrc: '/img/ciner.jpg',
+    title: 'Phi - Desarrollo Web',
+    description: 'Web site with Golden Ratio theme, done from the design, image editing and develop with advance SasS.',
+    technologies: ['HTML', 'CSS', 'SaaS'],
+    liveLink: 'https://phi-desarrollo.netlify.app/',
+    codeLink: 'https://github.com/KurtGuardia/Phi-Diseno-y-Desarrollo-Web',
+    imgSrc: '/img/phi.jpg',
   },
 ];
 
@@ -146,7 +146,6 @@ export function Projects() {
         <div className="flex flex-wrap justify-center mb-20 gap-y-8">
           <button onClick={() => handleFilterChange('all')} className="mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">All</button>
           <button onClick={() => handleFilterChange('react')} className="mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">React</button>
-          <button onClick={() => handleFilterChange('mern')} className="mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">MERN</button>
           <button onClick={() => handleFilterChange('website')} className="mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Website</button>
           <button onClick={() => handleFilterChange('javascript')} className="mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">JavaScript</button>
         </div>
