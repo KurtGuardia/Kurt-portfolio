@@ -23,19 +23,48 @@ const Footer = () => {
         </a>
       </div>
       <div className="flex space-x-4 mt-4 md:mt-0">
-        <a href="https://www.linkedin.com/in/kurt-guardia-creative" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <FaLinkedin className="h-6 w-6 hover:text-blue-500" />
+        <a
+          href="https://www.linkedin.com/in/kurt-guardia-creative"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="text-white bg-[#18191f] rounded-[29px] p-3 m-4 shadow-glow text-shadow-glow animate-animate"
+          style={{ animationDelay: "0.1s" }}
+        >
+          <FaLinkedin className="h-6 w-6" />
         </a>
-        <a href="https://github.com/KurtGuardia" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <FaGithub className="h-6 w-6 hover:text-gray-400" />
+        <a
+          href="https://github.com/KurtGuardia"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          className="text-white bg-[#18191f] rounded-[29px] p-3 m-4 shadow-glow text-shadow-glow animate-animate"
+          style={{ animationDelay: "0.3s" }}
+        >
+          <FaGithub className="h-6 w-6" />
         </a>
-        <a href="https://wa.me/+34685360189?text=Hey%20Kurt%2C%20I%20" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-          <FaWhatsapp className="h-6 w-6 hover:text-green-500" />
+        <a
+          href="https://wa.me/+34685360189?text=Hey%20Kurt%2C%20I%20"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+          className="text-white bg-[#18191f] rounded-[29px] p-3 m-4 shadow-glow text-shadow-glow animate-animate"
+          style={{ animationDelay: "0.7s" }}
+        >
+          <FaWhatsapp className="h-6 w-6" />
         </a>
-        <a href="mailto:kurtguardia@gmail.com?subject=Message%20from%20the%20landing%20page&body=Hey%20Kurt%2C%20I%20" target="_blank" rel="noopener noreferrer" aria-label="Email">
-          <FaEnvelope className="h-6 w-6 hover:text-yellow-500" />
+        <a
+          href="mailto:kurtguardia@gmail.com?subject=Message%20from%20the%20landing%20page&body=Hey%20Kurt%2C%20I%20"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Email"
+          className="text-white bg-[#18191f] rounded-[29px] p-3 m-4 shadow-glow text-shadow-glow animate-animate"
+          style={{ animationDelay: "1s" }}
+        >
+          <FaEnvelope className="h-6 w-6" />
         </a>
       </div>
+
     </footer>
   );
 };
