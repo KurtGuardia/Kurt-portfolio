@@ -150,6 +150,23 @@ const projectsData = [
     imgSrc: '/img/phi.jpg',
     demo: true,
   },
+  {
+    id: ['website', 'next'],
+    title: 'Kurt Portafolio',
+    description:
+      'This portafolio website, done in Next.js & Typescript, with animations on Framer Motion and an elegant design done with Tailwind. For the dev you are looking for ;)',
+    technologies: [
+      'Next',
+      'Typescript',
+      'Framer Motion',
+      'Tailwind',
+    ],
+    liveLink: 'https://kurtguardia.com/',
+    codeLink:
+      'https://github.com/KurtGuardia/Kurt-portfolio',
+    imgSrc: '/img/kurt-web.png',
+    demo: true,
+  },
 ]
 
 export function Projects() {
