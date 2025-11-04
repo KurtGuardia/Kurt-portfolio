@@ -30,9 +30,9 @@ const projectsData = [
     id: ['react'],
     title: 'Spotify Clone',
     description:
-      'Functional Spotify clone react app, with user authentication, firestore database and cloud storage',
+      'Functional Spotify clone react app, with user authentication, firestore database and cloud storage (Legacy project)',
     technologies: ['React', 'Redux', 'Firebase'],
-    liveLink: 'https://spotify-clone-8a46d.web.app/',
+    liveLink: 'https://spotify-clone-kg.netlify.app/',
     codeLink:
       'https://github.com/KurtGuardia/Spotify-Clone',
     imgSrc: '/img/spotify-clone.png',
@@ -92,7 +92,8 @@ const projectsData = [
     description:
       'Landing page for amaquella-asesoria.com a spanish located lawyers firm.',
     technologies: ['React', 'SCSS', 'Figma'],
-    liveLink: 'https://www.amaquella-asesoria.com',
+    liveLink: 'https://amaquella.netlify.app/',
+    // liveLink: 'https://www.amaquella-asesoria.com',
     codeLink: 'https://github.com/KurtGuardia/Ama-Quella',
     imgSrc: '/img/amaquella.png',
     imgSrcWebp: '/img/amaquella.webp',
