@@ -178,8 +178,9 @@ export function Projects() {
 
   useEffect(() => {
     const offset =
-      typeof window !== 'undefined' && window.innerHeight < 700
-        ? 80
+      typeof window !== 'undefined' &&
+      window.innerHeight < 700
+        ? 90
         : 150
 
     const observer = new IntersectionObserver(

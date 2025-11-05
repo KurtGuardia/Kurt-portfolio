@@ -1,11 +1,16 @@
 'use client'
 
 import { motion, useAnimation } from 'framer-motion'
-import { useEffect } from 'react';
-import Image from 'next/image';
-import kurtImage from '@/public/img/kurt.JPG';
-import styled from 'styled-components';
-import { FaDesktop, FaRocket, FaLightbulb, FaTachometerAlt } from 'react-icons/fa';
+import { useEffect } from 'react'
+import Image from 'next/image'
+import kurtImage from '@/public/img/kurt.JPG'
+import styled from 'styled-components'
+import {
+  FaDesktop,
+  FaRocket,
+  FaLightbulb,
+  FaTachometerAlt,
+} from 'react-icons/fa'
 
 const SectionAbout = styled.section`
   background: linear-gradient(to right, #222, #555, #777);
@@ -16,18 +21,24 @@ const SectionAbout = styled.section`
   animation: gradientAnimation 7s ease infinite;
 
   @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
-`;
+`
 
 const Img = styled(Image)`
   height: 100%;
   backface-visibility: hidden;
   transition: all 0.5s;
   transform: scale(1.15);
-`;
+`
 
 const Me = styled.div`
   width: 20rem;
@@ -46,7 +57,7 @@ const Me = styled.div`
     transform: scale(1);
     filter: blur(5px);
   }
-`;
+`
 
 const Caption = styled.figcaption`
   position: absolute;
@@ -65,7 +76,7 @@ const Caption = styled.figcaption`
   ${Me}:hover & {
     opacity: 1;
   }
-`;
+`
 
 const Content = styled.div`
   width: 90%;
@@ -76,14 +87,14 @@ const Content = styled.div`
     width: 80%;
   }
 
-  p {
+  & > p {
     font-size: 1.5rem;
-    color: #grey-light-2;
+    color: white;
     text-align: center;
     line-height: 1.3;
-    font-weight: 100;
+    font-weight: 300;
   }
-`;
+`
 
 const Features = styled.div`
   display: flex;
@@ -95,17 +106,17 @@ const Features = styled.div`
     flex-wrap: wrap;
     justify-content: center;
   }
-`;
+`
 
 const FeatureIcon = styled.div`
   font-size: 3rem;
-`;
+`
 
 const FeatureTitle = styled.h4`
   font-size: 1.5rem;
   color: #fff;
   margin: 0.5rem 0;
-`;
+`
 
 const Feature = styled.div`
   display: flex;
@@ -125,52 +136,56 @@ const Feature = styled.div`
       color: #ffcc00;
     }
   }
-`;
+`
 
 const FeatureText = styled.p`
   font-size: 1.2rem;
-  color: #grey-light-2;
+  color: whitesmoke;
   text-align: center;
   line-height: 1.3;
   font-weight: 100;
-`;
+`
+
+const MotionFeature = motion(Feature)
 
 export function About() {
-  const controlsTitle = useAnimation();
-  const controlsImage = useAnimation();
-  const controlsFeatures = useAnimation();
+  const controlsTitle = useAnimation()
+  const controlsImage = useAnimation()
+  const controlsFeatures = useAnimation()
 
   useEffect(() => {
     const handleScroll = () => {
-      const section = document.getElementById('about');
+      const section = document.getElementById('about')
       if (section) {
-        const rect = section.getBoundingClientRect();
+        const rect = section.getBoundingClientRect()
         // Adjust the threshold for visibility
-        if (rect.top < window.innerHeight - 500 && rect.bottom > 500) {
-
+        if (
+          rect.top < window.innerHeight * 0.6 &&
+          rect.bottom > window.innerHeight * 0.5
+        ) {
           // Start animations for individual components
-          controlsTitle.start({ opacity: 1, y: 0 });
-          controlsImage.start({ opacity: 1, y: 0 });
-          controlsFeatures.start({ opacity: 1, y: 0 });
+          controlsTitle.start({ opacity: 1, y: 0 })
+          controlsImage.start({ opacity: 1, y: 0 })
+          controlsFeatures.start({ opacity: 1, y: 0 })
         } else {
-
           // Reset animations when not visible
-          controlsTitle.start({ opacity: 0, y: 20 });
-          controlsImage.start({ opacity: 0, y: 20 });
-          controlsFeatures.start({ opacity: 0, y: 20 });
+          controlsTitle.start({ opacity: 0, y: 20 })
+          controlsImage.start({ opacity: 0, y: 20 })
+          controlsFeatures.start({ opacity: 0, y: 50 })
         }
       }
-    };
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [controlsTitle, controlsImage, controlsFeatures]);
+    window.addEventListener('scroll', handleScroll)
+    return () =>
+      window.removeEventListener('scroll', handleScroll)
+  }, [controlsTitle, controlsImage, controlsFeatures])
 
   return (
-    <SectionAbout id="about">
-      <div className="container mx-auto px-4">
+    <SectionAbout id='about'>
+      <div className='container mx-auto px-4'>
         <motion.h2
-          className="text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600"
+          className='text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600'
           initial={{ opacity: 0 }}
           animate={controlsTitle}
           transition={{ duration: 0.5 }}
@@ -180,25 +195,25 @@ export function About() {
 
         <Me>
           <motion.figure
-            className="section-about__me"
+            className='section-about__me'
             initial={{ opacity: 0, y: 20 }}
             animate={controlsImage}
             transition={{ duration: 0.5 }}
           >
             <Img
               src={kurtImage}
-              alt="kurt"
+              alt='kurt'
               width={500}
               height={500}
               priority
             />
-            <Caption className="section-about__caption">
+            <Caption className='section-about__caption'>
               LET'S WORK TOGETHER
             </Caption>
           </motion.figure>
         </Me>
 
-        <Content className="flex flex-col items-center">
+        <Content className='flex flex-col items-center'>
           <motion.p
             initial={{ opacity: 0 }}
             animate={controlsFeatures}
@@ -207,63 +222,75 @@ export function About() {
             Hard-working JavaScript Developer with a flair
             for creating elegant solutions in the least
             amount of time. Passionate about creating
-            user-friendly applications and looking
-            for growth opportunities to try new technologies
-            and grow my technical skill set in a team-based
+            user-friendly applications and looking for
+            growth opportunities to try new technologies and
+            grow my technical skill set in a team-based
             atmosphere.
           </motion.p>
 
           <Features>
-            <Feature>
-              <div className="feature__container">
-                <FeatureIcon>
-                  <FaDesktop />
-                </FeatureIcon>
-              </div>
+            <MotionFeature
+              initial={{ opacity: 0 }}
+              animate={controlsFeatures}
+              transition={{ duration: 0.5 }}
+            >
+              <FeatureIcon>
+                <FaDesktop />
+              </FeatureIcon>
               <FeatureTitle>Responsive</FeatureTitle>
               <FeatureText>
-                My layouts will work on any device, big or small
+                My layouts will work on any device, big or
+                small
               </FeatureText>
-            </Feature>
+            </MotionFeature>
 
-            <Feature>
-              <div className="feature__container">
-                <FeatureIcon>
-                  <FaTachometerAlt />
-                </FeatureIcon>
-              </div>
+            <MotionFeature
+              initial={{ opacity: 0 }}
+              animate={controlsFeatures}
+              transition={{ duration: 0.5 }}
+            >
+              <FeatureIcon>
+                <FaTachometerAlt />
+              </FeatureIcon>
               <FeatureTitle>Fast</FeatureTitle>
               <FeatureText>
-                Fast load, performance optimization my highest priority
+                Fast load, performance optimization my
+                highest priority
               </FeatureText>
-            </Feature>
+            </MotionFeature>
 
-            <Feature>
-              <div className="feature__container">
-                <FeatureIcon>
-                  <FaLightbulb />
-                </FeatureIcon>
-              </div>
+            <MotionFeature
+              initial={{ opacity: 0 }}
+              animate={controlsFeatures}
+              transition={{ duration: 0.5 }}
+            >
+              <FeatureIcon>
+                <FaLightbulb />
+              </FeatureIcon>
               <FeatureTitle>Intuitive</FeatureTitle>
               <FeatureText>
-                Intuitive UX/UI design for the best experience
+                Intuitive UX/UI design for the best
+                experience
               </FeatureText>
-            </Feature>
+            </MotionFeature>
 
-            <Feature>
-              <div className="feature__container">
-                <FeatureIcon>
-                  <FaRocket />
-                </FeatureIcon>
-              </div>
+            <MotionFeature
+              initial={{ opacity: 0 }}
+              animate={controlsFeatures}
+              transition={{ duration: 0.5 }}
+            >
+              <FeatureIcon>
+                <FaRocket />
+              </FeatureIcon>
               <FeatureTitle>Dynamic</FeatureTitle>
               <FeatureText>
-                All projects will feel alive, websites don’t have to be static
+                All projects will feel alive, websites don’t
+                have to be static
               </FeatureText>
-            </Feature>
+            </MotionFeature>
           </Features>
         </Content>
       </div>
     </SectionAbout>
-  );
+  )
 }
