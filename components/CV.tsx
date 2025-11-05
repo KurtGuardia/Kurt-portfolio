@@ -3,38 +3,26 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { Download } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useScrollVisibility } from 'hooks/useScrollVisibility'
 
 export function CV() {
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const cvSection = document.getElementById('cv')
-      if (cvSection) {
-        const rect = cvSection.getBoundingClientRect()
-        if (rect.top < window.innerHeight - 200) {
-          setIsMounted(true)
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+  const { ref: CVRef, isInView } = useScrollVisibility({
+    enterRatio: 0.7,
+    exitRatio: 0.4,
+  })
 
   return (
     <section
       id='cv'
       className='py-20 bg-gradient-to-br from-black to-gray-800 flex flex-col items-center justify-center'
+      ref={CVRef}
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={isMounted ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
+        animate={
+          isInView ? { opacity: 1, y: 0 } : { opacity: 0 }
+        }
+        transition={{ duration: 1 }}
         className='text-center'
       >
         <Button

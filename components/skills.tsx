@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
+import { useScrollVisibility } from '../hooks/useScrollVisibility'
 
 const skills = [
   { name: 'JavaScript', level: 93 },
@@ -17,48 +17,10 @@ const skills = [
 ]
 
 export function Skills() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    let handleScroll
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // When the section comes into view, do not change visibility yet
-          handleScroll = () => {
-            const scrollPosition = window.scrollY
-            const rect = entry.boundingClientRect
-
-            // Change visibility to true after scrolling down 300px
-            if (scrollPosition > rect.bottom + 10) {
-              setIsVisible(true)
-              window.removeEventListener(
-                'scroll',
-                handleScroll,
-              )
-            }
-          }
-
-          window.addEventListener('scroll', handleScroll)
-        } else {
-          setIsVisible(false)
-        }
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+  const { ref: skillsRef, isInView } = useScrollVisibility({
+    enterRatio: 0.6,
+    exitRatio: 0.4,
+  })
 
   return (
     <section
@@ -68,16 +30,14 @@ export function Skills() {
         backgroundSize: '400% 400%',
         animation: 'gradientAnimation 7s ease infinite',
       }}
-      ref={sectionRef}
+      ref={skillsRef}
     >
       <div className='container mx-auto px-4'>
         <motion.h2
           className='text-3xl md:text-4xl font-bold mb-12 text-center text-white'
           initial={{ opacity: 0, y: 20 }}
           animate={
-            isVisible
-              ? { opacity: 1, y: 0 }
-              : { opacity: 0 }
+            isInView ? { opacity: 1, y: 0 } : { opacity: 0 }
           }
           transition={{ duration: 1 }}
         >
@@ -89,9 +49,7 @@ export function Skills() {
               key={skill.name}
               className='bg-gray-800 rounded-lg p-4 shadow-lg'
               initial={{ opacity: 0, x: -20 }}
-              animate={
-                isVisible ? { opacity: 1, x: 0 } : {}
-              }
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{
                 duration: 1,
                 delay: index * 0.1,
@@ -105,7 +63,7 @@ export function Skills() {
                   className='h-full bg-gradient-to-r from-cyan-400 to-blue-500'
                   initial={{ width: 0 }}
                   animate={
-                    isVisible
+                    isInView
                       ? { width: `${skill.level}%` }
                       : {}
                   }

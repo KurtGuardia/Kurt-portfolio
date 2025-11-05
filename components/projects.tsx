@@ -11,8 +11,9 @@ import {
 } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ExternalLink, Github } from 'lucide-react'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useScrollVisibility } from '../hooks/useScrollVisibility'
 
 const projectsData = [
   {
@@ -172,43 +173,20 @@ const projectsData = [
 
 export function Projects() {
   const controls = useAnimation()
-  const [isVisible, setIsVisible] = useState(false)
   const [filter, setFilter] = useState('all')
-  const sectionRef = useRef(null)
+  const { ref: projectsRef, isInView } =
+    useScrollVisibility({
+      enterRatio: 0.5,
+      exitRatio: 0.4,
+    })
 
   useEffect(() => {
-    const offset =
-      typeof window !== 'undefined' &&
-      window.innerHeight < 700
-        ? 90
-        : 150
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          controls.start({ opacity: 1, y: 0 })
-          setIsVisible(true)
-        } else {
-          controls.start({ opacity: 0, y: 20 })
-          setIsVisible(false)
-        }
-      },
-      {
-        threshold: 0,
-        rootMargin: `0px 0px -${offset}px 0px`,
-      },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    if (isInView) {
+      controls.start({ opacity: 1, y: 0 })
+    } else {
+      controls.start({ opacity: 0, y: 20 })
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [controls])
+  }, [controls, isInView])
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter)
@@ -223,7 +201,7 @@ export function Projects() {
   return (
     <section
       id='projects'
-      ref={sectionRef}
+      ref={projectsRef}
       className='py-20 bg-gradient-to-br from-gray-900 to-black'
     >
       <div className='container mx-auto px-4'>
@@ -231,17 +209,16 @@ export function Projects() {
           className='text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600'
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
-          whileInView={
-            isVisible
-              ? { opacity: 1, y: 0 }
-              : { opacity: 0, y: 20 }
-          }
           transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
         >
           My Projects
         </motion.h2>
-        <div className='flex flex-wrap justify-center mb-20 gap-y-8'>
+        <motion.div
+          className='flex flex-wrap justify-center mb-20 gap-y-8'
+          initial={{ opacity: 0, y: 20 }}
+          animate={controls}
+          transition={{ duration: 0.5 }}
+        >
           <button
             onClick={() => handleFilterChange('all')}
             className='mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
@@ -272,23 +249,17 @@ export function Projects() {
           >
             JavaScript
           </button>
-        </div>
+        </motion.div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {filteredProjects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
               animate={controls}
-              whileInView={
-                isVisible
-                  ? { opacity: 1, y: 0 }
-                  : { opacity: 0, y: 40 }
-              }
               transition={{
                 duration: 0.5,
                 delay: index * 0.2,
               }}
-              viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
               className='animate-float'
             >

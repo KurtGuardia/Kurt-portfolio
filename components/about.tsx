@@ -11,6 +11,7 @@ import {
   FaLightbulb,
   FaTachometerAlt,
 } from 'react-icons/fa'
+import { useScrollVisibility } from '../hooks/useScrollVisibility'
 
 const SectionAbout = styled.section`
   background: linear-gradient(to right, #222, #555, #777);
@@ -152,37 +153,30 @@ export function About() {
   const controlsTitle = useAnimation()
   const controlsImage = useAnimation()
   const controlsFeatures = useAnimation()
+  const { ref: aboutRef, isInView } = useScrollVisibility({
+    enterRatio: 0.6,
+    exitRatio: 0.4,
+  })
 
   useEffect(() => {
-    const handleScroll = () => {
-      const section = document.getElementById('about')
-      if (section) {
-        const rect = section.getBoundingClientRect()
-        // Adjust the threshold for visibility
-        if (
-          rect.top < window.innerHeight * 0.6 &&
-          rect.bottom > window.innerHeight * 0.5
-        ) {
-          // Start animations for individual components
-          controlsTitle.start({ opacity: 1, y: 0 })
-          controlsImage.start({ opacity: 1, y: 0 })
-          controlsFeatures.start({ opacity: 1, y: 0 })
-        } else {
-          // Reset animations when not visible
-          controlsTitle.start({ opacity: 0, y: 20 })
-          controlsImage.start({ opacity: 0, y: 20 })
-          controlsFeatures.start({ opacity: 0, y: 50 })
-        }
-      }
+    if (isInView) {
+      controlsTitle.start({ opacity: 1, y: 0 })
+      controlsImage.start({ opacity: 1, y: 0 })
+      controlsFeatures.start({ opacity: 1, y: 0 })
+    } else {
+      controlsTitle.start({ opacity: 0, y: 20 })
+      controlsImage.start({ opacity: 0, y: 20 })
+      controlsFeatures.start({ opacity: 0, y: 50 })
     }
-
-    window.addEventListener('scroll', handleScroll)
-    return () =>
-      window.removeEventListener('scroll', handleScroll)
-  }, [controlsTitle, controlsImage, controlsFeatures])
+  }, [
+    controlsFeatures,
+    controlsImage,
+    controlsTitle,
+    isInView,
+  ])
 
   return (
-    <SectionAbout id='about'>
+    <SectionAbout id='about' ref={aboutRef}>
       <div className='container mx-auto px-4'>
         <motion.h2
           className='text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600'
