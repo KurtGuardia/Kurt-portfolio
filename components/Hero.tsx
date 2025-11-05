@@ -1,8 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, JSX } from 'react'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/Button'
 import { ArrowRight } from 'lucide-react'
 import Particles from './Particles'
 import Link from 'next/link'
@@ -13,17 +11,14 @@ export function Hero() {
       {/* Animated background gradient */}
       <div className='absolute inset-0 bg-gradient-to-br from-purple-600/30 via-black to-indigo-600/30 animate-gradient' />
 
-      {/* Animated particles */}
-      <div className='absolute inset-0'>
-        <Particles />
-      </div>
+      <Particles />
 
       <div className='container mx-auto px-4 relative z-10'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className='max-w-4xl mx-auto text-center'
+          className='flex flex-col md:gap-8 max-w-4xl mx-auto text-center'
         >
           <motion.h1
             className='text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-clip-text text-transparent'
@@ -41,7 +36,7 @@ export function Hero() {
             Kurt Guardia
           </motion.h1>
           <motion.h2
-            className='text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white'
+            className='text-2xl md:text-4xl lg:text-5xl font-bold mb-6 text-white'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -49,7 +44,7 @@ export function Hero() {
             JavaScript Developer
           </motion.h2>
           <motion.p
-            className='text-xl md:text-2xl text-gray-300 mb-8'
+            className='text-lg md:text-3xl lg:text-4xl text-gray-300 mb-8'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -58,27 +53,25 @@ export function Hero() {
             cutting-edge technologies
           </motion.p>
           <motion.div
-            className='flex flex-col items-center justify-center'
+            className='flex items-center justify-center md:gap-6 lg:gap-12'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <div className='flex justify-center'>
-              <Link
-                href='#projects'
-                className='flex items-center rounded-full px-4 py-2 text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-600 hover:to-cyan-600 transition-all duration-500 shadow-md shadow-cyan-500/50 w-fit'
-              >
-                View Projects
-                <ArrowRight className='ml-2 h-4 w-4 transform rotate-90' />
-              </Link>
-              <a
-                href='/assets/CV Kurt.pdf'
-                download
-                className='bg-transparent text-white px-4 py-2 rounded border-2 border-white/20 hover:border-white/50 transition-all duration-300 w-fit mx-4'
-              >
-                Download CV
-              </a>
-            </div>
+            <Link
+              href='#projects'
+              className='flex items-center text-sm md:text-lg lg:text-xl rounded-full px-2 md:px-4 py-2 text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-600 hover:to-cyan-600 transition-all duration-500 shadow-md shadow-cyan-500/50 w-fit'
+            >
+              View Projects
+              <ArrowRight className='ml-2 h-4 w-4 transform rotate-90' />
+            </Link>
+            <a
+              href='/assets/CV Kurt.pdf'
+              download
+              className='bg-transparent text-white text-sm md:text-lg lg:text-xl px-4 py-2 rounded border-2 border-white/20 hover:border-white/50 transition-all duration-300 w-fit mx-4'
+            >
+              Download CV
+            </a>
           </motion.div>
         </motion.div>
       </div>

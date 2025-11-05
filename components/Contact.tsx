@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/Textarea'
 import { Send } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useScrollVisibility } from 'hooks/useScrollVisibility'
+import Particles from './Particles'
 
 export function Contact() {
   const [showPopup, setShowPopup] = useState(false)
@@ -15,10 +16,7 @@ export function Contact() {
   const [message, setMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { ref: constactRef, isInView } =
-    useScrollVisibility({
-      enterRatio: 0.6,
-    })
-  console.log('🚀 ~ Contact ~ isInView:', isInView)
+    useScrollVisibility()
 
   const handleFormSubmit = async (event) => {
     event.preventDefault()
@@ -55,7 +53,7 @@ export function Contact() {
       className='py-20 flex flex-col items-center'
       ref={constactRef}
     >
-      <div className='bg-gray-800 p-10 rounded-lg shadow-lg w-full md:max-w-[500px] max-w-[300px] mx-auto relative z-10'>
+      <div className='bg-gray-800 p-10 rounded-lg shadow-lg w-full md:max-w-[500px] max-w-[300px] mx-auto z-10'>
         <motion.h2
           className='text-3xl md:text-4xl font-bold mb-12 text-center text-white'
           initial={{ opacity: 0, y: 20 }}

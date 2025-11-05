@@ -17,10 +17,11 @@ const skills = [
 ]
 
 export function Skills() {
-  const { ref: skillsRef, isInView } = useScrollVisibility({
-    enterRatio: 0.6,
-    exitRatio: 0.4,
-  })
+  const { ref: skillsRef, isInView } = useScrollVisibility()
+
+  const controls = isInView
+    ? { opacity: 1, y: 0 }
+    : { opacity: 0 }
 
   return (
     <section
@@ -36,9 +37,7 @@ export function Skills() {
         <motion.h2
           className='text-3xl md:text-4xl font-bold mb-12 text-center text-white'
           initial={{ opacity: 0, y: 20 }}
-          animate={
-            isInView ? { opacity: 1, y: 0 } : { opacity: 0 }
-          }
+          animate={controls}
           transition={{ duration: 1 }}
         >
           My Skills
@@ -47,9 +46,9 @@ export function Skills() {
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
-              className='bg-gray-800 rounded-lg p-4 shadow-lg'
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              className='bg-gray-800 rounded-lg p-2 md:p-4 shadow-lg'
+              initial={{ opacity: 0, y: 100 }}
+              animate={controls}
               transition={{
                 duration: 1,
                 delay: index * 0.1,

@@ -172,7 +172,6 @@ const projectsData = [
 ]
 
 export function Projects() {
-  const controls = useAnimation()
   const [filter, setFilter] = useState('all')
   const { ref: projectsRef, isInView } =
     useScrollVisibility({
@@ -180,13 +179,9 @@ export function Projects() {
       exitRatio: 0.4,
     })
 
-  useEffect(() => {
-    if (isInView) {
-      controls.start({ opacity: 1, y: 0 })
-    } else {
-      controls.start({ opacity: 0, y: 20 })
-    }
-  }, [controls, isInView])
+  const controls = isInView
+    ? { opacity: 1, y: 0 }
+    : { opacity: 0 }
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter)

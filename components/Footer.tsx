@@ -10,9 +10,8 @@ import {
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-800 text-white p-8 rounded-tl-3xl rounded-tr-3xl mx-10 flex flex-col md:flex-row items-center justify-between'>
+    <footer className='bg-gray-800 text-white p-8 rounded-tl-3xl rounded-tr-3xl mx-6 md:mx-10 flex flex-col md:flex-row items-center justify-between'>
       <p className='text-sm text-center md:text-left'>
-        {' '}
         &copy; {new Date().getFullYear()} Kurt Guardia.
         <br /> All rights reserved.
       </p>

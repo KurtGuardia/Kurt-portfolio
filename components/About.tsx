@@ -50,8 +50,8 @@ const Me = styled.div`
   border-radius: 50%;
 
   @media only screen and (max-width: 768px) {
-    width: 20rem;
-    height: 20rem;
+    width: 13rem;
+    height: 13rem;
   }
 
   &:hover ${Img} {
@@ -77,23 +77,30 @@ const Caption = styled.figcaption`
   ${Me}:hover & {
     opacity: 1;
   }
+
+  @media only screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `
 
 const Content = styled.div`
-  width: 90%;
   max-width: 100rem;
   margin: 5rem auto;
 
   @media only screen and (max-width: 1024px) {
-    width: 80%;
+    margin: 2rem 0;
   }
 
   & > p {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: white;
     text-align: center;
     line-height: 1.3;
     font-weight: 300;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 1.2rem;
+    }
   }
 `
 
@@ -101,22 +108,41 @@ const Features = styled.div`
   display: flex;
   align-items: center;
   margin-top: 4rem;
+  gap: 32px;
 
   @media only screen and (max-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 25px;
   }
 `
 
 const FeatureIcon = styled.div`
   font-size: 3rem;
+  @media only screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
 `
 
 const FeatureTitle = styled.h4`
   font-size: 1.5rem;
   color: #fff;
   margin: 0.5rem 0;
+  @media only screen and (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+`
+
+const FeatureText = styled.p`
+  font-size: 1.2rem;
+  color: whitesmoke;
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 100;
+  @media only screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 `
 
 const Feature = styled.div`
@@ -139,49 +165,22 @@ const Feature = styled.div`
   }
 `
 
-const FeatureText = styled.p`
-  font-size: 1.2rem;
-  color: whitesmoke;
-  text-align: center;
-  line-height: 1.3;
-  font-weight: 100;
-`
-
 const MotionFeature = motion(Feature)
 
 export function About() {
-  const controlsTitle = useAnimation()
-  const controlsImage = useAnimation()
-  const controlsFeatures = useAnimation()
-  const { ref: aboutRef, isInView } = useScrollVisibility({
-    enterRatio: 0.6,
-    exitRatio: 0.4,
-  })
+  const { ref: aboutRef, isInView } = useScrollVisibility()
 
-  useEffect(() => {
-    if (isInView) {
-      controlsTitle.start({ opacity: 1, y: 0 })
-      controlsImage.start({ opacity: 1, y: 0 })
-      controlsFeatures.start({ opacity: 1, y: 0 })
-    } else {
-      controlsTitle.start({ opacity: 0, y: 20 })
-      controlsImage.start({ opacity: 0, y: 20 })
-      controlsFeatures.start({ opacity: 0, y: 50 })
-    }
-  }, [
-    controlsFeatures,
-    controlsImage,
-    controlsTitle,
-    isInView,
-  ])
+  const controls = isInView
+    ? { opacity: 1, y: 0 }
+    : { opacity: 0 }
 
   return (
     <SectionAbout id='about' ref={aboutRef}>
       <div className='container mx-auto px-4'>
         <motion.h2
-          className='text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600'
+          className='text-3xl md:text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600'
           initial={{ opacity: 0 }}
-          animate={controlsTitle}
+          animate={controls}
           transition={{ duration: 0.5 }}
         >
           About Me
@@ -190,8 +189,8 @@ export function About() {
         <Me>
           <motion.figure
             className='section-about__me'
-            initial={{ opacity: 0, y: 20 }}
-            animate={controlsImage}
+            initial={{ opacity: 0, y: 50 }}
+            animate={controls}
             transition={{ duration: 0.5 }}
           >
             <Img
@@ -209,8 +208,8 @@ export function About() {
 
         <Content className='flex flex-col items-center'>
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={controlsFeatures}
+            initial={{ opacity: 0, y: 100 }}
+            animate={controls}
             transition={{ duration: 0.5 }}
           >
             Hard-working JavaScript Developer with a flair
@@ -224,8 +223,8 @@ export function About() {
 
           <Features>
             <MotionFeature
-              initial={{ opacity: 0 }}
-              animate={controlsFeatures}
+              initial={{ opacity: 0, y: 150 }}
+              animate={controls}
               transition={{ duration: 0.5 }}
             >
               <FeatureIcon>
@@ -239,8 +238,8 @@ export function About() {
             </MotionFeature>
 
             <MotionFeature
-              initial={{ opacity: 0 }}
-              animate={controlsFeatures}
+              initial={{ opacity: 0, y: 150 }}
+              animate={controls}
               transition={{ duration: 0.5 }}
             >
               <FeatureIcon>
@@ -254,8 +253,8 @@ export function About() {
             </MotionFeature>
 
             <MotionFeature
-              initial={{ opacity: 0 }}
-              animate={controlsFeatures}
+              initial={{ opacity: 0, y: 150 }}
+              animate={controls}
               transition={{ duration: 0.5 }}
             >
               <FeatureIcon>
@@ -269,8 +268,8 @@ export function About() {
             </MotionFeature>
 
             <MotionFeature
-              initial={{ opacity: 0 }}
-              animate={controlsFeatures}
+              initial={{ opacity: 0, y: 150 }}
+              animate={controls}
               transition={{ duration: 0.5 }}
             >
               <FeatureIcon>
