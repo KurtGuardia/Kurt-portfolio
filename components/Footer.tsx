@@ -1,18 +1,28 @@
 'use client'
 
-import React from 'react';
-import { FaLinkedin, FaGithub, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
+import React from 'react'
+import {
+  FaLinkedin,
+  FaGithub,
+  FaWhatsapp,
+  FaEnvelope,
+} from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white p-8 rounded-tl-3xl rounded-tr-3xl mx-10 flex flex-col md:flex-row items-center justify-between">
-      <p className="text-sm text-center md:text-left"> &copy; {new Date().getFullYear()} Kurt Guardia.<br /> All rights reserved.</p>
-      <div className="flex flex-grow justify-center items-center mt-4 md:mt-0">
-        <a href="#" onClick={() => window.scrollTo(0, 0)}>
+    <footer className='bg-gray-800 text-white p-8 rounded-tl-3xl rounded-tr-3xl mx-10 flex flex-col md:flex-row items-center justify-between'>
+      <p className='text-sm text-center md:text-left'>
+        {' '}
+        &copy; {new Date().getFullYear()} Kurt Guardia.
+        <br /> All rights reserved.
+      </p>
+      <div className='flex flex-grow justify-center items-center mt-4 md:mt-0'>
+        <a href='#' onClick={() => window.scrollTo(0, 0)}>
           <h1
-            className="text-8xl font-bold bg-clip-text text-transparent"
+            className='text-8xl font-bold bg-clip-text text-transparent'
             style={{
-              background: 'linear-gradient(to right, #6a0dad, #e74c3c, #3498db)',
+              background:
+                'linear-gradient(to right, #6a0dad, #e74c3c, #3498db)',
               backgroundSize: '400% 400%',
               WebkitBackgroundClip: 'text',
               animation: 'gradientAnimation 7s infinite',
@@ -22,51 +32,50 @@ const Footer = () => {
           </h1>
         </a>
       </div>
-      <div className="flex space-x-4 mt-4 md:mt-0">
+      <div className='flex space-x-4 mt-4 md:mt-0'>
         <a
-          href="https://www.linkedin.com/in/kurt-guardia-creative"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-          className="text-white bg-[#18191f] rounded-[29px] p-3 m-4 shadow-glow text-shadow-glow animate-animate"
-          style={{ animationDelay: "0.1s" }}
+          href='https://www.linkedin.com/in/kurt-guardia-creative'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='LinkedIn'
+          className='text-white bg-[#18191f] rounded-[29px] p-3 shadow-glow text-shadow-glow animate-animate'
+          style={{ animationDelay: '0.1s' }}
         >
-          <FaLinkedin className="h-6 w-6" />
+          <FaLinkedin className='h-6 w-6' />
         </a>
         <a
-          href="https://github.com/KurtGuardia"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          className="text-white bg-[#18191f] rounded-[29px] p-3 m-4 shadow-glow text-shadow-glow animate-animate"
-          style={{ animationDelay: "0.3s" }}
+          href='https://github.com/KurtGuardia'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='GitHub'
+          className='text-white bg-[#18191f] rounded-[29px] p-3 shadow-glow text-shadow-glow animate-animate'
+          style={{ animationDelay: '0.3s' }}
         >
-          <FaGithub className="h-6 w-6" />
+          <FaGithub className='h-6 w-6' />
         </a>
         <a
-          href="https://wa.me/+34685360189?text=Hey%20Kurt%2C%20I%20"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="WhatsApp"
-          className="text-white bg-[#18191f] rounded-[29px] p-3 m-4 shadow-glow text-shadow-glow animate-animate"
-          style={{ animationDelay: "0.7s" }}
+          href='https://wa.me/+34685360189?text=Hey%20Kurt%2C%20I%20'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='WhatsApp'
+          className='text-white bg-[#18191f] rounded-[29px] p-3 shadow-glow text-shadow-glow animate-animate'
+          style={{ animationDelay: '0.7s' }}
         >
-          <FaWhatsapp className="h-6 w-6" />
+          <FaWhatsapp className='h-6 w-6' />
         </a>
         <a
-          href="mailto:kurtguardia@gmail.com?subject=Message%20from%20the%20landing%20page&body=Hey%20Kurt%2C%20I%20"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Email"
-          className="text-white bg-[#18191f] rounded-[29px] p-3 m-4 shadow-glow text-shadow-glow animate-animate"
-          style={{ animationDelay: "1s" }}
+          href='mailto:kurtguardia@gmail.com?subject=Message%20from%20the%20landing%20page&body=Hey%20Kurt%2C%20I%20'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='Email'
+          className='text-white bg-[#18191f] rounded-[29px] p-3 shadow-glow text-shadow-glow animate-animate'
+          style={{ animationDelay: '1s' }}
         >
-          <FaEnvelope className="h-6 w-6" />
+          <FaEnvelope className='h-6 w-6' />
         </a>
       </div>
-
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
