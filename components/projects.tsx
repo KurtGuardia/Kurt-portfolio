@@ -177,21 +177,25 @@ export function Projects() {
   const sectionRef = useRef(null)
 
   useEffect(() => {
+    const offset =
+      typeof window !== 'undefined' && window.innerHeight < 700
+        ? 80
+        : 150
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          const rect = entry.boundingClientRect
-          // Add 50px offset before changing visibility
-          if (rect.top < window.innerHeight - 150) {
-            controls.start({ opacity: 1, y: 0 })
-            setIsVisible(true)
-          }
+          controls.start({ opacity: 1, y: 0 })
+          setIsVisible(true)
         } else {
           controls.start({ opacity: 0, y: 20 })
           setIsVisible(false)
         }
       },
-      { threshold: 0.1 },
+      {
+        threshold: 0,
+        rootMargin: `0px 0px -${offset}px 0px`,
+      },
     )
 
     if (sectionRef.current) {
