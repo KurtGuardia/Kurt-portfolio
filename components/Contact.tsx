@@ -85,11 +85,11 @@ export function Contact() {
           )
         }
       })
-      await fetch('/', {
+      const response = await fetch('/', {
         method: 'POST',
         headers: {
-          'Content-Type':
-            'application/x-www-form-urlencoded',
+          'Content‑Type':
+            'application/x‑www‑form‑urlencoded',
         },
         body: new URLSearchParams({
           'form-name': 'contact',
@@ -98,10 +98,16 @@ export function Contact() {
           message,
         }).toString(),
       })
-        .then(() =>
-          console.log('Form successfully submitted'),
+      if (!response.ok) {
+        console.error(
+          'Form submission failed with status',
+          response.status,
         )
-        .catch((error) => alert(error))
+        throw new Error(
+          `Form submission failed: ${response.status}`,
+        )
+      }
+      console.log('Form successfully submitted')
 
       setShowPopup(true)
       setName('')
