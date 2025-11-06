@@ -85,7 +85,7 @@ export function Contact() {
           )
         }
       })
-      await fetch('/form-index.html', {
+      await fetch('/', {
         method: 'POST',
         headers: {
           'Content-Type':
@@ -146,7 +146,7 @@ export function Contact() {
             noValidate
             className='space-y-4 flex flex-col'
             onSubmit={handleFormSubmit}
-            action='/form-index.html'
+            action='/'
           >
             <input
               type='hidden'
