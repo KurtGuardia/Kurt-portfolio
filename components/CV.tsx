@@ -8,7 +8,7 @@ import { useScrollVisibility } from 'hooks/useScrollVisibility'
 export function CV() {
   const { ref: CVRef, isInView } = useScrollVisibility({
     enterRatio: 0.7,
-    exitRatio: 0.4,
+    exitRatio: 0,
   })
 
   return (
