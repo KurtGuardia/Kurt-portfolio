@@ -88,9 +88,10 @@ export function Contact() {
       const response = await fetch('/', {
         method: 'POST',
         headers: {
-          'Content‑Type':
-            'application/x‑www‑form‑urlencoded',
+          'Content-Type':
+            'application/x-www-form-urlencoded',
         },
+
         body: new URLSearchParams({
           'form-name': 'contact',
           name,
