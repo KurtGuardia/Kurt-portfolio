@@ -27,7 +27,7 @@ export function CV() {
       >
         <Button
           asChild
-          className='flex items-center bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-blue-700 hover:to-cyan-500 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 w-fit'
+          className='flex items-center bg-gradient-to-r from-cyan-400 to-blue-600 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg transition-all duration-500 transform hover:scale-105 w-fit hover:from-blue-700 hover:to-cyan-500 hover:shadow-[0_20px_40px_rgba(37,99,235,0.45)]'
         >
           <a
             href='/assets/CV Kurt.pdf'

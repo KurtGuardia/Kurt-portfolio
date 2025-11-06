@@ -60,7 +60,7 @@ export function Hero() {
           >
             <Link
               href='#projects'
-              className='flex items-center text-sm md:text-lg lg:text-xl rounded-full px-2 md:px-4 py-2 text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-600 hover:to-cyan-600 transition-all duration-500 shadow-md shadow-cyan-500/50 w-fit'
+              className='flex items-center text-sm md:text-lg lg:text-xl rounded-full px-2 md:px-4 py-2 text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-500 transform hover:scale-105 w-fit hover:from-blue-700 hover:to-cyan-500 hover:shadow-[0_20px_40px_rgba(37,99,235,0.45)]'
             >
               View Projects
               <ArrowRight className='ml-2 h-4 w-4 transform rotate-90' />
@@ -102,15 +102,6 @@ export function Hero() {
           />
         </div>
       </motion.div>
-      <style>
-        {`
-          @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-        `}
-      </style>
     </section>
   )
 }

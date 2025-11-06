@@ -37,7 +37,7 @@ const Footer = () => {
           target='_blank'
           rel='noopener noreferrer'
           aria-label='LinkedIn'
-          className='text-white bg-[#18191f] rounded-[29px] p-3 shadow-glow text-shadow-glow animate-animate'
+          className='social-icon'
           style={{ animationDelay: '0.1s' }}
         >
           <FaLinkedin className='h-6 w-6' />
@@ -47,7 +47,7 @@ const Footer = () => {
           target='_blank'
           rel='noopener noreferrer'
           aria-label='GitHub'
-          className='text-white bg-[#18191f] rounded-[29px] p-3 shadow-glow text-shadow-glow animate-animate'
+          className='social-icon'
           style={{ animationDelay: '0.3s' }}
         >
           <FaGithub className='h-6 w-6' />
@@ -57,7 +57,7 @@ const Footer = () => {
           target='_blank'
           rel='noopener noreferrer'
           aria-label='WhatsApp'
-          className='text-white bg-[#18191f] rounded-[29px] p-3 shadow-glow text-shadow-glow animate-animate'
+          className='social-icon'
           style={{ animationDelay: '0.7s' }}
         >
           <FaWhatsapp className='h-6 w-6' />
@@ -67,7 +67,7 @@ const Footer = () => {
           target='_blank'
           rel='noopener noreferrer'
           aria-label='Email'
-          className='text-white bg-[#18191f] rounded-[29px] p-3 shadow-glow text-shadow-glow animate-animate'
+          className='social-icon'
           style={{ animationDelay: '1s' }}
         >
           <FaEnvelope className='h-6 w-6' />
