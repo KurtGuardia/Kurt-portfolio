@@ -85,7 +85,7 @@ export function Contact() {
           )
         }
       })
-      await fetch('/', {
+      await fetch('/form-index.html', {
         method: 'POST',
         headers: {
           'Content-Type':
