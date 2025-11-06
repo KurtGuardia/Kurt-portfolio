@@ -28,6 +28,16 @@ const projectsData = [
     demo: true,
   },
   {
+    id: ['website'],
+    title: 'Ciner',
+    description:
+      'Landing page for ciner.org renewable energy data center, build with advance techniques',
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    liveLink: 'https://ciner.org',
+    codeLink: 'https://github.com/KurtGuardia/Ciner',
+    imgSrc: '/img/ciner.jpg',
+  },
+  {
     id: ['react'],
     title: 'Spotify Clone',
     description:
@@ -40,14 +50,14 @@ const projectsData = [
     demo: true,
   },
   {
-    id: ['website'],
-    title: 'Ciner',
+    id: ['website', 'next'],
+    title: 'Vappeo',
     description:
-      'Landing page for ciner.org renewable energy data center, build with advance techniques',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    liveLink: 'https://ciner.org',
-    codeLink: 'https://github.com/KurtGuardia/Ciner',
-    imgSrc: '/img/ciner.jpg',
+      'Bolivian e-commerce for vapping products, done with next js, maps with React Leaflet (reverse geolocation) and personalized Whatsapp messages.',
+    technologies: ['Next.js', 'React Leaflet', 'Tailwind'],
+    liveLink: 'https://vappeo.com/',
+    codeLink: 'https://github.com/KurtGuardia/Vappeo',
+    imgSrc: '/img/vappeo.png',
   },
   {
     id: ['website', 'react'],
@@ -59,16 +69,6 @@ const projectsData = [
     codeLink: 'https://github.com/KurtGuardia/balance',
     imgSrc: '/img/balance.png',
     imgSrcWebp: '/img/balance.webp',
-  },
-  {
-    id: ['website', 'next'],
-    title: 'Vappeo',
-    description:
-      'Bolivian e-commerce for vapping products, done with next js, maps with React Leaflet (reverse geolocation) and personalized Whatsapp messages.',
-    technologies: ['Next.js', 'React Leaflet', 'Tailwind'],
-    liveLink: 'https://vappeo.com/',
-    codeLink: 'https://github.com/KurtGuardia/Vappeo',
-    imgSrc: '/img/vappeo.png',
   },
   {
     id: ['react'],
@@ -91,10 +91,9 @@ const projectsData = [
     id: ['website', 'react'],
     title: 'Amaquella',
     description:
-      'Landing page for amaquella-asesoria.com a spanish located lawyers firm.',
+      'Landing page for amaquella-asesoria.com a spanish located lawyers firm. (closing in 2025)',
     technologies: ['React', 'SCSS', 'Figma'],
     liveLink: 'https://amaquella.netlify.app/',
-    // liveLink: 'https://www.amaquella-asesoria.com',
     codeLink: 'https://github.com/KurtGuardia/Ama-Quella',
     imgSrc: '/img/amaquella.png',
     imgSrcWebp: '/img/amaquella.webp',
@@ -109,7 +108,7 @@ const projectsData = [
       'Tailwind',
       'Tailwind animations',
     ],
-    liveLink: 'https://nadiahomsi.netlify.app/',
+    liveLink: 'https://dramedica-terapeuta.com/',
     codeLink: 'https://github.com/KurtGuardia/nadia-homsi',
     imgSrc: '/img/nadia.png',
   },
