@@ -68,8 +68,10 @@ export function Contact() {
 
     setErrors({ name: '', email: '', message: '' })
 
-    // Submit the form programmatically
     formRef.current?.submit()
+    setTimeout(() => {
+      window.location.href = '/thank-you.html'
+    }, 100)
   }
 
   return (
