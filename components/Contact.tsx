@@ -146,7 +146,7 @@ export function Contact() {
             noValidate
             className='space-y-4 flex flex-col'
             onSubmit={handleFormSubmit}
-            action='/'
+            action='/form-index.html'
           >
             <input
               type='hidden'
