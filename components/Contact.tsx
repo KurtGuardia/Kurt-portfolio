@@ -74,6 +74,10 @@ export function Contact() {
     }, 100)
   }
 
+  const controls = isInView
+    ? { opacity: 1, y: 0 }
+    : { opacity: 0 }
+
   return (
     <section
       id='contact'
@@ -84,18 +88,14 @@ export function Contact() {
         <motion.h2
           className='text-3xl md:text-4xl font-bold mb-12 text-center text-white'
           initial={{ opacity: 0, y: 20 }}
-          animate={
-            isInView ? { opacity: 1, y: 0 } : { opacity: 0 }
-          }
+          animate={controls}
           transition={{ duration: 1 }}
         >
           Get in Touch
         </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={
-            isInView ? { opacity: 1, y: 0 } : { opacity: 0 }
-          }
+          animate={controls}
           transition={{ duration: 1 }}
         >
           <form

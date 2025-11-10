@@ -8,7 +8,6 @@ import Link from 'next/link'
 export function Hero() {
   return (
     <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
-      {/* Animated background gradient */}
       <div className='absolute inset-0 bg-gradient-to-br from-purple-600/30 via-black to-indigo-600/30 animate-gradient' />
 
       <Particles />

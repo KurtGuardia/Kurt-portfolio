@@ -1,7 +1,6 @@
 'use client'
 
-import { motion, useAnimation } from 'framer-motion'
-import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import kurtImage from '@/public/img/kurt.JPG'
 import styled from 'styled-components'

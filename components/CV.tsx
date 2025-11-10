@@ -11,6 +11,10 @@ export function CV() {
     exitRatio: 0,
   })
 
+  const controls = isInView
+    ? { opacity: 1, y: 0 }
+    : { opacity: 0 }
+
   return (
     <section
       id='cv'
@@ -19,9 +23,7 @@ export function CV() {
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={
-          isInView ? { opacity: 1, y: 0 } : { opacity: 0 }
-        }
+        animate={controls}
         transition={{ duration: 1 }}
         className='text-center'
       >
