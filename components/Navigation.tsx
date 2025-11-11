@@ -68,7 +68,18 @@ export function Navigation() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href='/' className='text-2xl font-bold'>
+            <Link
+              href='/'
+              className='text-2xl font-bold'
+              style={{
+                color: 'transparent',
+                background:
+                  'linear-gradient(to right, #6a0dad, #e74c3c, #3498db)',
+                backgroundSize: '400% 400%',
+                WebkitBackgroundClip: 'text',
+                animation: 'gradientAnimation 7s infinite',
+              }}
+            >
               KG
             </Link>
           </motion.div>
