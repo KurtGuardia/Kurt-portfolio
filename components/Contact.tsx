@@ -2,11 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { useRef, useState } from 'react'
+import { Send } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
-import { Send } from 'lucide-react'
-import { useScrollVisibility } from '../hooks/useScrollVisibility'
+import { useScrollVisibility } from '@/hooks/useScrollVisibility'
+import PrismaticBurst from './ui/PrismaticBurst'
+import Footer from './Footer'
 
 export function Contact() {
   const formRef = useRef<HTMLFormElement>(null)
@@ -81,10 +83,28 @@ export function Contact() {
   return (
     <section
       id='contact'
-      className='py-20 flex flex-col items-center'
+      className='flex flex-col items-center'
       ref={contactRef}
+      style={{
+        width: '100%',
+        // height: '90%',
+        position: 'relative',
+      }}
     >
-      <div className='bg-gray-800 p-10 rounded-lg shadow-lg w-full md:max-w-[500px] max-w-[300px] mx-auto z-10'>
+      <PrismaticBurst
+        animationType='rotate3d'
+        intensity={3}
+        speed={1}
+        distort={0.5}
+        paused={false}
+        offset={{ x: 0, y: 0 }}
+        hoverDampness={0.25}
+        rayCount={0}
+        mixBlendMode='lighten'
+        colors={['#c9024e', '#3c2aff', '#ffffff']}
+      />
+
+      <div className='bg-gray-800 p-10 rounded-lg shadow-lg w-full md:max-w-[500px] max-w-[300px] mx-auto z-10 my-20'>
         <motion.h2
           className='text-3xl md:text-4xl font-bold mb-12 text-center text-white'
           initial={{ opacity: 0, y: 20 }}
@@ -202,6 +222,8 @@ export function Contact() {
           </form>
         </motion.div>
       </div>
+
+      <Footer />
     </section>
   )
 }

@@ -12,6 +12,7 @@ import styled from 'styled-components'
 
 const Main = styled.main`
   background: linear-gradient(to right, #000000, #435998);
+  background: black;
   color: #fff;
   background-size: 400% 400%;
   animation: gradientAnimation 7s ease infinite;
@@ -39,7 +40,7 @@ export default function Home() {
       <Projects />
       <CV />
       <Contact />
-      <Footer />
+      {/* <Footer /> */}
     </Main>
   )
 }
