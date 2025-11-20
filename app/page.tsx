@@ -1,5 +1,6 @@
 'use client'
 
+import styled from 'styled-components'
 import { Hero } from '@/components/Hero'
 import { Navigation } from '@/components/Navigation'
 import { Projects } from '@/components/Projects'
@@ -8,8 +9,9 @@ import { About } from '@/components/About'
 import { Skills } from '@/components/Skills'
 import { Contact } from '@/components/Contact'
 import Footer from '@/components/Footer'
-import styled from 'styled-components'
+import SplashCursor from '@/components/ui/SplashCursor'
 
+;<SplashCursor />
 const Main = styled.main`
   background: linear-gradient(to right, #000000, #435998);
   background: black;
@@ -33,6 +35,7 @@ const Main = styled.main`
 export default function Home() {
   return (
     <Main>
+      <SplashCursor />
       <Navigation />
       <Hero />
       <About />
