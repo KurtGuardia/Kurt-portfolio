@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import {
   Renderer,
   Program,
@@ -6,6 +6,19 @@ import {
   Triangle,
   Texture,
 } from 'ogl'
+
+interface PrismaticBurstProps {
+  intensity?: number
+  speed?: number
+  animationType?: 'rotate' | 'rotate3d' | 'hover'
+  colors?: string[]
+  distort?: number
+  paused?: boolean
+  offset?: { x: number; y: number }
+  hoverDampness?: number
+  rayCount?: number
+  mixBlendMode?: string
+}
 
 const vertexShader = `#version 300 es
 in vec2 position;
@@ -180,7 +193,9 @@ void main(){
     fragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
 }`
 
-const hexToRgb01 = (hex) => {
+const hexToRgb01 = (
+  hex: string,
+): [number, number, number] => {
   let h = hex.trim()
   if (h.startsWith('#')) h = h.slice(1)
   if (h.length === 3) {
@@ -198,7 +213,7 @@ const hexToRgb01 = (hex) => {
   return [r, g, b]
 }
 
-const toPx = (v) => {
+const toPx = (v: any): number => {
   if (v == null) return 0
   if (typeof v === 'number') return v
   const s = String(v).trim()
@@ -206,7 +221,7 @@ const toPx = (v) => {
   return isNaN(num) ? 0 : num
 }
 
-const PrismaticBurst = ({
+const PrismaticBurst: React.FC<PrismaticBurstProps> = ({
   intensity = 2,
   speed = 0.5,
   animationType = 'rotate3d',
@@ -218,17 +233,21 @@ const PrismaticBurst = ({
   rayCount,
   mixBlendMode = 'lighten',
 }) => {
-  const containerRef = useRef(null)
-  const programRef = useRef(null)
-  const rendererRef = useRef(null)
-  const mouseTargetRef = useRef([0.5, 0.5])
-  const mouseSmoothRef = useRef([0.5, 0.5])
-  const pausedRef = useRef(paused)
-  const gradTexRef = useRef(null)
-  const hoverDampRef = useRef(hoverDampness)
-  const isVisibleRef = useRef(true)
-  const meshRef = useRef(null)
-  const triRef = useRef(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const programRef = useRef<any>(null)
+  const rendererRef = useRef<any>(null)
+  const mouseTargetRef = useRef<[number, number]>([
+    0.5, 0.5,
+  ])
+  const mouseSmoothRef = useRef<[number, number]>([
+    0.5, 0.5,
+  ])
+  const pausedRef = useRef<boolean>(paused)
+  const gradTexRef = useRef<any>(null)
+  const hoverDampRef = useRef<number>(hoverDampness)
+  const isVisibleRef = useRef<boolean>(true)
+  const meshRef = useRef<any>(null)
+  const triRef = useRef<any>(null)
 
   useEffect(() => {
     pausedRef.current = paused
@@ -315,16 +334,16 @@ const PrismaticBurst = ({
       ]
     }
 
-    let ro = null
+    let ro: ResizeObserver | null = null
     if ('ResizeObserver' in window) {
       ro = new ResizeObserver(resize)
       ro.observe(container)
     } else {
-      window.addEventListener('resize', resize)
+      ;(window as any).addEventListener('resize', resize)
     }
     resize()
 
-    const onPointer = (e) => {
+    const onPointer = (e: PointerEvent) => {
       const rect = container.getBoundingClientRect()
       const x =
         (e.clientX - rect.left) / Math.max(rect.width, 1)
@@ -339,7 +358,7 @@ const PrismaticBurst = ({
       passive: true,
     })
 
-    let io = null
+    let io: IntersectionObserver | undefined
     if ('IntersectionObserver' in window) {
       io = new IntersectionObserver(
         (entries) => {
@@ -357,7 +376,7 @@ const PrismaticBurst = ({
     let last = performance.now()
     let accumTime = 0
 
-    const update = (now) => {
+    const update = (now: number) => {
       const dt = Math.max(0, now - last) * 0.001
       last = now
       const visible =
@@ -451,7 +470,7 @@ const PrismaticBurst = ({
     program.uniforms.uIntensity.value = intensity ?? 1
     program.uniforms.uSpeed.value = speed ?? 1
 
-    const animTypeMap = {
+    const animTypeMap: Record<string, number> = {
       rotate: 0,
       rotate3d: 1,
       hover: 2,

@@ -151,4 +151,15 @@ export const projectsData = [
     imgSrc: '/img/kurt-web.png',
     demo: true,
   },
+  {
+    id: ['AI', 'react'],
+    title: 'ATS CV analyzer with AI',
+    description:
+      'ATS (Applicant Tracking System) CV analyzer with AI. Using Puter service (free account required), you can upload your CV and get a score and feedback from the AI tailored for the specific job.',
+    technologies: ['React', 'Typescript', 'AI'],
+    liveLink: 'https://cv-ats-analyzer.netlify.app/',
+    codeLink: 'https://github.com/KurtGuardia/CV-analyzer',
+    imgSrc: '/img/CV-analyzer.png',
+    demo: true,
+  },
 ]

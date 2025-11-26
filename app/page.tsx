@@ -11,7 +11,6 @@ import { Contact } from '@/components/Contact'
 import Footer from '@/components/Footer'
 import SplashCursor from '@/components/ui/SplashCursor'
 
-;<SplashCursor />
 const Main = styled.main`
   background: linear-gradient(to right, #000000, #435998);
   background: black;

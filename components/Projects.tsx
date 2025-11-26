@@ -16,6 +16,15 @@ import Image from 'next/image'
 import { useScrollVisibility } from '../hooks/useScrollVisibility'
 import { projectsData } from '../data/projects'
 
+const filters = [
+  { label: 'All', value: 'all' },
+  { label: 'React', value: 'react' },
+  { label: 'Next', value: 'next' },
+  { label: 'JavaScript', value: 'javaScript' },
+  { label: 'Webiste', value: 'webiste' },
+  { label: 'AI', value: 'AI' },
+]
+
 export function Projects() {
   const [filter, setFilter] = useState('all')
   const { ref: projectsRef, isInView } =
@@ -59,36 +68,16 @@ export function Projects() {
           animate={controls}
           transition={{ duration: 0.5 }}
         >
-          <button
-            onClick={() => handleFilterChange('all')}
-            className='mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
-          >
-            All
-          </button>
-          <button
-            onClick={() => handleFilterChange('react')}
-            className='mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
-          >
-            React
-          </button>
-          <button
-            onClick={() => handleFilterChange('next')}
-            className='mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
-          >
-            Next
-          </button>
-          <button
-            onClick={() => handleFilterChange('website')}
-            className='mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
-          >
-            Website
-          </button>
-          <button
-            onClick={() => handleFilterChange('javascript')}
-            className='mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
-          >
-            JavaScript
-          </button>
+          {filters.map((filter) => (
+            <button
+              onClick={() =>
+                handleFilterChange(filter.value)
+              }
+              className='mx-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
+            >
+              {filter.label}
+            </button>
+          ))}
         </motion.div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {filteredProjects.map((project, index) => (
