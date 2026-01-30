@@ -70,6 +70,7 @@ export function Projects() {
         >
           {filters.map((filter) => (
             <button
+              key={filter.value}
               onClick={() =>
                 handleFilterChange(filter.value)
               }
@@ -82,7 +83,7 @@ export function Projects() {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {filteredProjects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
               initial={{ opacity: 0, y: 40 }}
               animate={controls}
               transition={{
@@ -102,7 +103,7 @@ export function Projects() {
                     alt={project.title}
                     width={300}
                     height={200}
-                    className='h-auto max-w-xs'
+                    className='h-auto w-auto max-w-xs'
                   />
                 </CardHeader>
                 <CardContent className='mt-4'>
@@ -110,9 +111,9 @@ export function Projects() {
                     {project.description}
                   </CardDescription>
                   <div className='flex flex-wrap gap-2'>
-                    {project.technologies.map((tech, i) => (
+                    {project.technologies.map((tech) => (
                       <span
-                        key={i}
+                        key={`${project.title}-${tech}`}
                         className='bg-gray-700 text-cyan-400 text-xs px-2 py-1 rounded'
                       >
                         {tech}

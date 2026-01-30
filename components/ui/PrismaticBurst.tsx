@@ -260,12 +260,30 @@ const PrismaticBurst: React.FC<PrismaticBurstProps> = ({
     const container = containerRef.current
     if (!container) return
 
+    const hasWebGLSupport = () => {
+      if (typeof window === 'undefined') return false
+      const testCanvas = document.createElement('canvas')
+      return !!(
+        testCanvas.getContext('webgl2') ||
+        testCanvas.getContext('webgl') ||
+        testCanvas.getContext('experimental-webgl')
+      )
+    }
+
+    if (!hasWebGLSupport()) return
+
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
-    const renderer = new Renderer({
-      dpr,
-      alpha: false,
-      antialias: false,
-    })
+    let renderer: Renderer | null = null
+    try {
+      renderer = new Renderer({
+        dpr,
+        alpha: false,
+        antialias: false,
+      })
+    } catch (error) {
+      return
+    }
+    if (!renderer.gl || !renderer.gl.canvas) return
     rendererRef.current = renderer
 
     const gl = renderer.gl

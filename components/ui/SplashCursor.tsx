@@ -1,6 +1,6 @@
 
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 interface SplashCursorProps {
   SIM_RESOLUTION?: number;
@@ -36,10 +36,61 @@ function SplashCursor({
   TRANSPARENT = true,
 }: SplashCursorProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const [webglSupported, setWebglSupported] = useState<boolean | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+
+    const hasWebGLSupport = () => {
+      if (typeof window === 'undefined') return false
+      const testCanvas = document.createElement('canvas')
+      return !!(
+        testCanvas.getContext('webgl2') ||
+        testCanvas.getContext('webgl') ||
+        testCanvas.getContext('experimental-webgl')
+      )
+    }
+
+    const supported = hasWebGLSupport()
+    setWebglSupported(supported)
+    if (!supported) {
+      const updateFallback = (e: PointerEvent) => {
+        const x = e.clientX
+        const y = e.clientY
+        document.documentElement.style.setProperty(
+          '--cursor-x',
+          `${x}px`,
+        )
+        document.documentElement.style.setProperty(
+          '--cursor-y',
+          `${y}px`,
+        )
+      }
+
+      if (typeof window !== 'undefined') {
+        document.documentElement.style.setProperty(
+          '--cursor-x',
+          '50vw',
+        )
+        document.documentElement.style.setProperty(
+          '--cursor-y',
+          '50vh',
+        )
+        window.addEventListener('pointermove', updateFallback, {
+          passive: true,
+        })
+      }
+
+      return () => {
+        if (typeof window !== 'undefined') {
+          window.removeEventListener(
+            'pointermove',
+            updateFallback,
+          )
+        }
+      }
+    }
 
     function pointerPrototype() {
       this.id = -1
@@ -74,7 +125,9 @@ function SplashCursor({
 
     let pointers = [new (pointerPrototype as any)()]
 
-    const { gl, ext } = getWebGLContext(canvas)
+    const webglContext = getWebGLContext(canvas)
+    if (!webglContext) return
+    const { gl, ext } = webglContext
     if (!ext.supportLinearFiltering) {
       config.DYE_RESOLUTION = 256
       config.SHADING = false
@@ -94,7 +147,7 @@ function SplashCursor({
         gl =
           canvas.getContext('webgl', params) ||
           canvas.getContext('experimental-webgl', params)
-      if (!gl) throw new Error('WebGL not supported')
+      if (!gl) return null
       let halfFloat
       let supportLinearFiltering
       if (isWebGL2) {
@@ -1591,6 +1644,18 @@ function SplashCursor({
         id='fluid'
         className='w-screen h-screen block'
       ></canvas>
+      {webglSupported === false && (
+        <div
+          aria-hidden='true'
+          className='w-full h-full'
+          style={{
+            background:
+              'radial-gradient(circle at var(--cursor-x, 50vw) var(--cursor-y, 50vh), rgba(255, 0, 128, 0.45) 0%, rgba(0, 180, 255, 0.25) 25%, rgba(0, 0, 0, 0) 45%)',
+            filter: 'blur(12px)',
+            mixBlendMode: 'screen',
+          }}
+        />
+      )}
     </div>
   )
 }
