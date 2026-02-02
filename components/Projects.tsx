@@ -21,7 +21,7 @@ const filters = [
   { label: 'React', value: 'react' },
   { label: 'Next', value: 'next' },
   { label: 'JavaScript', value: 'javaScript' },
-  { label: 'Webiste', value: 'webiste' },
+  { label: 'Website', value: 'website' },
   { label: 'AI', value: 'AI' },
 ]
 
